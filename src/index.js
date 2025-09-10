@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App'; //App.js 파일을 의미
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 리액트 라우터를 사용하기위해 BrowserRouter를 App외부에 감싸주는 역할
 // App.js 파일을 index.js 파일을 포함하고 있으므로, BrowserRouters는 index.js 파일에 한번만 명시해주면 됨
-import { BrowserRouter } from 'react-router-dom'; 
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,7 +17,7 @@ rendering을 두번 실행. 따라서, <React.StrictMode> 를 삭제 */
 
 root.render(
     <BrowserRouter>
-    <App />
+        <App />
     </BrowserRouter>
 );
 

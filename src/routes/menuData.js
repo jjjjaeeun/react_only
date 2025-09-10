@@ -38,7 +38,7 @@ export const menuData = [
     },
 
     {
-        chapter: "ch04. hooks",
+        chapter: "ch05. hooks",
         items: [
             { path: '/use_state_01', label: '스테이트 실습 01' },
             { path: '/use_State_02', label: '스테이트 실습 02' },
@@ -47,6 +47,16 @@ export const menuData = [
             { path: '/use_effect_01', label: '유저 이펙트01' },
             { path: '/use_effect_02', label: '유저 이펙트02' },
             { path: '/use_effect_03', label: '유저 이펙트03' },
+
+        ]
+    },
+
+    {
+        chapter: "ch06. IT Cafe",
+        items: [
+            { path: '/coffee_bread_01', label: 'IT Cafe 01' },
+            { path: '/coffee_bread_02', label: 'IT Cafe 02' },
+
 
         ]
     },
