@@ -44,6 +44,8 @@ import AppUseEffect03 from '../components/ch05.hooks/use_effect_03';
 //ch06장
 import AppCafe01 from '../components/ch06.bootstrap/coffee_bread_01/main';
 import AppCafe02 from '../components/ch06.bootstrap/coffee_bread_02/main';
+import AppCafe03 from '../components/ch06.bootstrap/coffee_bread_03/main';
+import AppCafe04 from '../components/ch06.bootstrap/coffee_bread_04/main';
 
 
 
@@ -86,6 +88,8 @@ function AppRoutes() {
 
             <Route path='/coffee_bread_01' element={<AppCafe01 />} />
             <Route path='/coffee_bread_02' element={<AppCafe02 />} />
+            <Route path='/coffee_bread_03' element={<AppCafe03 />} />
+            <Route path='/coffee_bread_04' element={<AppCafe04 />} />
 
 
         </Routes>
