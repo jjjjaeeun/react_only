@@ -26,7 +26,8 @@ function App() {
     /* insert, update, delete, read, detail 등등 */
     const [mode, setMode] = useState('');
 
-    /* 프로그램 최초 시작시 1번이 선택되었다고 가정 */
+    /* selectedId는 현재 선택이 된 항목의 상품 id 정보임.
+     프로그램 최초 시작시 1번이 선택되었다고 가정 */
     const [selectedId, setSelectedId] = useState(1);
 
     /* 상품 목록에서 특정 상품 1개를 클릭 */
@@ -56,13 +57,13 @@ function App() {
 
         setMode(mode); // 변경된 모드로 mode 스테이트에 할당함
 
-        // if (mode === 'get_update') { //수정 하려고 클릭
-        //     // const currentProduct = getProductById();
-        //     // console.log('수정할 상품 정보 출력: ')
-        //     // console.log(currentProduct);
+        if (mode === 'get_delete') { // 사용자가 특정 항목을 삭제하려고 시도함
+            // 삭제하려고 선택한 품목의 id만 제외하고, 다시 필터링함.
+            const remainProduct = getExceptData(selectedId);
+            setProducts(remainProduct);
+            setMode('read');
 
-        //     setCurrentProduct(getProductById());
-        // }
+        }
     };
 
     // /* 등록 양식에서 넘어온 신규 상품을 관리할 state 정의 */
@@ -112,6 +113,36 @@ function App() {
         setMode('read');
     }
 
+    /* 카테고리 정보는 동적으로 갱신이 되어야 하므로, 다음과 같이 자바 스크립트 배열을 만들어서 처리애야함
+    1. 자바 스크립트 배열로 카테고리 초기화
+    2. 관리 해야 하므로 state로 처리
+    3. form 양식(상품 등록,수정 페이지)에서 카테고리를 동적으로 생성
+    4. 추가/삭제 작업이 발생하면 동적으로 갱신해야 함
+    5. 상품 목록 페이지에서 카테고리 한글 이름이 나오도록 수정(배열의 find() 함수)
+     */
+
+    const categoryList = [
+        { ename: 'bread', kname: '빵' },
+        { ename: 'beverage', kname: '음료' },
+    ];
+
+    const [categories, setCategories] = useState(categoryList);
+
+    /* 사용자가 카테고리 추가 화면에서 내용을 기입하고,[추가] 버튼을 누름 */
+    const InsertCategory = (formData) => {
+        // formData는 신규 추가할 카테고리
+
+        // 파라미터 이름은 파일 CreateCategory에서 참조해야함
+        const newCategory = { ename: formData.ename.value, kname: formData.kname.value };
+
+        // totalCategory는 이전 카테고리에 신규 카테고리를 추가한 목록
+        const totalCategory = categories.concat(newCategory);
+
+        setCategories(totalCategory);// 카테고리 정보 갱신
+        setMode('read'); // 모드변경
+
+    }
+
     return (
         <Card>
             <Card.Header>
@@ -120,7 +151,7 @@ function App() {
             </Card.Header>
             <Card.Body>
                 {/* onClickToContent 프롭스가 리턴되고 난 후 ClickArrived 함수가 동작되도록 하겠습니다. */}
-                <Content contents={products} onClickToContent={ClickArrived} />
+                <Content contents={products} onClickToContent={ClickArrived} categories={categories} />
             </Card.Body>
             <Card.Body>
                 <Switcher
@@ -128,6 +159,8 @@ function App() {
                     product={getProductById()}
                     onSubmitInsert={InsertData}
                     onSubmitUpdate={UpdateData}
+                    onSubmitCategoryAdd={InsertCategory}
+                    categories={categories}
                 />
             </Card.Body>
             <Card.Footer>

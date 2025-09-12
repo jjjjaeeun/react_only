@@ -13,7 +13,7 @@ import { useState } from "react";
 4. id 항목은 사용자에게 보여주되, 읽기 전용으로 처리하면 됩니다.
     가짜 id는 읽기 전용, 진짜 정보는 type="hidden"으로 처리합니다.
  */
-function App({ product, onSubmitUpdate }) {
+function App({ product, onSubmitUpdate, categories }) {
 
     const comment = '수정'; // 코드에서 반복적인 단어는 변수로 만들어 JSX 문법으로 처리
 
@@ -56,34 +56,44 @@ function App({ product, onSubmitUpdate }) {
 
                     <Form.Control type="text" name="fakeid" onChange={InputChange} value={formData.id} disabled></Form.Control>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">이름</InputGroup.Text>
                     <Form.Control type="text" name="name" onChange={InputChange} value={formData.name}></Form.Control>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">가격</InputGroup.Text>
                     <Form.Control type="text" name="price" onChange={InputChange} value={formData.price} ></Form.Control>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">카테고리</InputGroup.Text>
-                    <Form.Select name="category" onChange={InputChange} >
+                    <Form.Select name="category" onChange={InputChange} value={formData.category} >
                         <option value="-">-- 카테고리를 선택해 주세요.</option>
-                        <option value="bread" selected={formData.category === 'bread'}>빵</option>
-                        <option value="beverage" selected={formData.category === 'beverage'}>음료</option>
+                        {categories.map((cate, index) => (
+                            <option key={index} value={cate.ename}>
+                                {cate.kname}
+                            </option>
+                        ))}
                     </Form.Select>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">재고</InputGroup.Text>
                     <Form.Control type="text" name="stock" onChange={InputChange} value={formData.stock} ></Form.Control>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">이미지</InputGroup.Text>
                     <Form.Control type="text" name="image" onChange={InputChange} value={formData.image} ></Form.Control>
                 </InputGroup>
+
                 <InputGroup className="custom-input-group">
                     <InputGroup.Text className="input-group-text">세부설명</InputGroup.Text>
                     <Form.Control as="textarea" name="description" onChange={InputChange} value={formData.description} ></Form.Control>
                 </InputGroup>
+
                 <div className="d-grid gap-2">
                     <Button type="submit">{comment}</Button>
                 </div>
