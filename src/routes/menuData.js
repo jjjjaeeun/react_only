@@ -2,6 +2,21 @@
 //export 키워드는 외부에서 참조 가능하도록 길을 틔워줌
 export const menuData = [
     {
+        chapter: "ch01. Basic",
+        items: [
+            { path: '/make_array_01', label: '배열 실습 01' },
+            { path: '/math_object_01', label: 'Math 객체 실습 01' },
+            { path: '/if_exercise', label: 'If 구문 실습' },
+            { path: '/switch_exercise', label: 'Switch 구문 실습' },
+            { path: '/typeof_number', label: 'Typeof와 Number 실습' },
+            { path: '/etc_exam', label: 'etc_exam 실습' },
+            { path: '/form_exam', label: 'form 양식 실습' },
+            { path: '/list_exam', label: '목록(ol, ul) 실습' },
+            { path: '/table_exam', label: '테이블 실습' },
+        ]
+    },
+
+    {
         chapter: "ch02. ECMAScript",
         items: [
             { path: '/let_const', label: 'let & const 실습' },
@@ -13,6 +28,7 @@ export const menuData = [
             { path: '/spread_operator', label: '전개 연산자' },
         ]
     },
+
     {
         chapter: "ch03. Component",
         items: [
@@ -25,6 +41,7 @@ export const menuData = [
             { path: '/array_and_table_02', label: '테이블 만들기02' },
         ]
     },
+
     {
         chapter: "ch04. event",
         items: [

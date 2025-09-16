@@ -3,6 +3,17 @@
 // npm istall react-router-dom 엔터
 import { Routes, Route } from 'react-router-dom';
 
+// ch01 장
+import AppMakeArray01 from './../components/ch01.react_basic/make_array_01';
+import AppMathObject01 from './../components/ch01.react_basic/math_object_01';
+import AppIfExercise from './../components/ch01.react_basic/if_exercise';
+import AppSwitchExercise from './../components/ch01.react_basic/switch_exercise';
+import AppTypeOfNumber from './../components/ch01.react_basic/typeof_number';
+import AppEtcExam from './../components/ch01.react_basic/etc_exam';
+import AppFormExam from './../components/ch01.react_basic/form_exam';
+import AppListExam from './../components/ch01.react_basic/list_exam';
+import AppTableExam from './../components/ch01.react_basic/table_exam';
+
 // ch02 장
 // 기호 .은 현재 폴더, ..은 상위 폴더 , / 폴더 구분자
 //import 앱이름 from '전체 경로 / 파일명'
@@ -13,7 +24,6 @@ import AppMakeFunction from '../components/ch02.es6_syntax/make_function';
 import AppArrowfunction from '../components/ch02.es6_syntax/arrow_function';
 import AppArraymap from '../components/ch02.es6_syntax/array_map';
 import AppSpreadOperator from '../components/ch02.es6_syntax/spread_operator';
-
 
 //ch03장
 import AppClassComponent from '../components/ch03.component/Components01';
@@ -57,6 +67,16 @@ function AppRoutes() {
     return (
         <Routes>
             {/*element 속성에는 컴포넌트 자체가 아니라 jsx 요소를 넣어야합니다. */}
+            <Route path='/make_array_01' element={<AppMakeArray01 />} />
+            <Route path='/math_object_01' element={<AppMathObject01 />} />
+            <Route path='/if_exercise' element={<AppIfExercise />} />
+            <Route path='/switch_exercise' element={<AppSwitchExercise />} />
+            <Route path='/typeof_number' element={<AppTypeOfNumber />} />
+            <Route path='/etc_exam' element={<AppEtcExam />} />
+            <Route path='/form_exam' element={<AppFormExam />} />
+            <Route path='/list_exam' element={<AppListExam />} />
+            <Route path='/table_exam' element={<AppTableExam />} />
+
             <Route path='/' element={<AppLetConst />} />
             <Route path='/let_const' element={<AppLetConst />} />
             <Route path='/template_string' element={<AppTemplateString />} />
@@ -96,7 +116,6 @@ function AppRoutes() {
             <Route path='/coffee_bread_05' element={<AppCafe05 />} />
             <Route path='/coffee_bread_06' element={<AppCafe06 />} />
             <Route path='/coffee_bread_07' element={<AppCafe07 />} />
-
 
         </Routes>
 

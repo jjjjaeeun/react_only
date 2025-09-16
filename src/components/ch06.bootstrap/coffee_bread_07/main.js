@@ -208,6 +208,14 @@ function App() {
         Ordering(orderInfo);
     }
 
+    // 필드 검색을 사용하여 필터링을 수행할지를 결정하는 부울 타입의 변수
+    const isFilteringNeeded = filterCategory && filterCategory !== 'all';
+
+    // 삼항 연산자를 사용하여 선택된 카테고리와 동일한 품목들만 필터링함
+    const filteredProducts = isFilteringNeeded
+        ? products.filter((item) => item.category === filterCategory)
+        : products;
+
     return (
         <Card>
             <Card.Header>
@@ -217,7 +225,7 @@ function App() {
             <Card.Body>
                 {/* onClickToContent 프롭스가 리턴되고 난 후 ClickArrived 함수가 동작되도록 하겠습니다. */}
                 <Content
-                    contents={products}
+                    contents={filteredProducts}
                     onClickToContent={ClickArrived}
                     categories={categories}
                     onOrderByClick={ClickOrdertBy}
